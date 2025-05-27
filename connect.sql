@@ -1,0 +1,1 @@
+INSERT INTO T_tifosi SELECT (nom_focaccia, prix, ingredients, nom_ingredient, nom_marque, nom_boisson, marque) FROM focaccia, ingredient, marque, boisson  WHERE id = 1
