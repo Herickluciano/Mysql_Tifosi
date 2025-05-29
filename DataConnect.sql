@@ -1,83 +1,46 @@
--- creation de la base de donnee
-CREATE DATABASE db_tifosi ;
-USE db_tifosi ;
+USE db_tifosi;
 
 
+INSERT INTO T_focaccia (nom, prix) VALUES
+('faccacia 1', 'prix 1'),
+('faccacia 2', 'prix 2');
 
+INSERT INTO Client (nom, email, code_postal) VALUES
+('Client 1', 'email 1', 'code_postal 1'),
+('Client 2', 'email 4', 'code_postal 2'),
+('Client 3', 'email 3', 'code_postal 3');
 
--- Création du  schéma (db_tifosi)
-CREATE SCHEMA IF NOT EXISTS db_tifosi;
+INSERT INTO menu (nom, prix, Id_foccacia) VALUES
+('Client 1', 'prix 1', '1'),
+('Client 2', 'prix 4', '2'),
+('Client 3', 'prix 3', '3');
 
--- Création des tables dans le schéma
-CREATE TABLE IF NOT EXISTS db_tifosi.T_focaccia (
-     id_focaccia INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-     nom_focaccia CHAR(20) NOT NULL
-     prix CHAR(20) NOT NULL
-     ingredients CHAR(20) NOT NULL
-);
+INSERT INTO marque (nom) VALUES
+('marque 1'),
+('marque 2'),
+('marque 3');
 
-CREATE TABLE IF NOT EXISTS db_tifosi.T_ingredient (
-    id_ingredient INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    nom_ingredient CHAR(20) NOT NULL
-);
+INSERT INTO boisson (nom) VALUES
+('boisson 1'),
+('boisson 2'),
+('boisson 3');
 
-CREATE TABLE IF NOT EXISTS db_tifosi.T_marque (
-    id_marque INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    nom_marque CHAR(20) NOT NULL
-);
+INSERT INTO comprend (Id_client, Id_foccacia, quantite) VALUES
+('1, 1', 'quantite 1'),
+('2, 2', 'quantite 3'),
+('3, 3', 'quantite 4');
 
-CREATE TABLE IF NOT EXISTS db_tifosi.T_boisson (
-    id_boisson INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    nom_boisson CHAR(20) NOT NULL,
-marque CHAR(20) NOT NULL
-);
+INSERT INTO achete (Id_boisson, Id_menu, date_achat) VALUES
+('1, 1', 'date_achat 1'),
+('2, 2', 'date_achat 3'),
+('3, 3', 'date_achat 4');
 
+INSERT INTO appartient (Id_marque, Id_boisson) VALUES
+('1, 1'),
+('2, 2'),
+('3, 3');
 
-
-
--- creation des tables de connexion avec la base de donnee
-CREATE TABLE T_focaccia
-(
-id_focaccia INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-nom_focaccia CHAR(20) NOT NULL,
-prix CHAR(20) NOT NULL,
-ingredients CHAR(20) NOT NULL
-) ENGINE = InnoDB CHARACTER SET latin1 COLLATE latin1_bin;
-
-CREATE TABLE T_ingredient
-(
-id_ingredient INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-nom_ingredient CHAR(20) NOT NULL
-) ENGINE = InnoDB CHARACTER SET latin1 COLLATE latin1_bin;
-
-
-CREATE TABLE T_marque
-(
-id_marque INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-nom_marque CHAR(20) NOT NULL
-) ENGINE = InnoDB CHARACTER SET latin1 COLLATE latin1_bin;
-
-
-CREATE TABLE T_boisson
-(
-id_boisson INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-nom_boisson CHAR(20) NOT NULL
-marque CHAR(20) NOT NULL
-) ENGINE = InnoDB CHARACTER SET latin1 COLLATE latin1_bin;
-
-
-CREATE TABLE T_tifosi
-(
-ti_Num INT NOT NULL PRIMARY KEY AUTO_INCREMENT ,
-id_focaccia INT NOT NULL ,
-id_ingredient INT NOT NULL ,
-id_marque INT NOT NULL ,
-id_boisson INT NULL ,
-ti_Modele CHAR(20) NOT NULL ,
-ti_NbPortsMb INT NOT NULL ,
-ti_NbPortsGb INT NOT NULL ,
-FOREIGN KEY (id_focaccia) REFERENCES T_focaccia(id_focaccia) ,
-FOREIGN KEY (id_ingredient) REFERENCES T_Batiments(T_ingredient),
-FOREIGN KEY (id_marque) REFERENCES T_marque(id_marque) ,
-FOREIGN KEY (id_boisson) REFERENCES T_boisson(id_boisson)
-) ENGINE = InnoDB CHARACTER SET latin1 COLLATE latin1_bin ;
+INSERT INTO contient (Id_menu, Id_boisson) VALUES
+('1, 1'),
+('2, 2'),
+('3, 3');

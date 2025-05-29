@@ -1,4 +1,5 @@
 -- Requêtes de test pour les table de la BDD 'db_tifosi'
+USE db_tifosi;
 
 -- Sélectionner tous les s focaccias
 SELECT * FROM T_focaccia;
@@ -7,13 +8,14 @@ SELECT * FROM T_focaccia;
 SELECT * FROM T_focaccia ORDER BY nom_focaccia ASC;
 
 -- Afficher le nombre total d'ingrédients
-SELECT * FROM T_ingredient;
+SELECT COUNT(*) FROM T_ingredient;
 
 -- Afficher le prix moyen des focaccias
-SELECT AVG(8.90) FROM T_focaccia
+SELECT AVG(prix) FROM T_focaccia
 
 -- Afficher la liste des boissons avec leur marque, triée par nom de boisson
-SELECT * FROM T_boisson ORDER BY  nom_boisson;
+SELECT * FROM T_boisson 
+INNER JOIN T_marque ON T_boisson.Id_boisson=T_marque.Id_boisson;
 
 -- Afficher la liste des ingrédients pour une Raclaccia
 SELECT nom_ingredient FROM T_focaccia WHERE nom_focaccia = 'Raclaccia';
@@ -22,9 +24,9 @@ SELECT nom_ingredient FROM T_focaccia WHERE nom_focaccia = 'Raclaccia';
 SELECT nom_ingredient, id_ingredient FROM T_focaccia;
 
 -- Afficher le nom de la focaccia qui a le plus d'ingrédients,
-SELECT Base Tomate  FROM Clients T_focaccia;
+SELECT nom_focaccia  FROM Clients WHERE Id_foccacia>id_ingredient;
 
--- Afficher la liste des focaccia qui contiennent de l'ai,
+-- Afficher la liste des focaccia qui contiennent de l'ail,
 SELECT Base Tomate, Base creme FROM T_focaccia ORDER BY nom_focaccia ASC; 
 
 -- Afficher la liste des ingrédients inutilisés
